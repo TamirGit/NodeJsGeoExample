@@ -22,9 +22,17 @@ html
     script.
         var map;
         function initMap() {
+            var location = {lat: #{lat}, lng: #{lng}};
+
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: #{lat}, lng: #{lng}},
+                center: location,
                 zoom: 16
+            });
+
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: 'Location'
             });
         }
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyCFIdix9F26dAOBdsZSSf04hhu_fT2fCS4&callback=initMap', async='', defer='')
